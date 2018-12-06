@@ -4,17 +4,28 @@ using UnityEngine;
 
 public class MainCamera : MonoBehaviour {
     public float rotateSpeed = 1f;
-    public Transform target;
-	// Use this for initialization
+    public Transform forward;
+    public Transform phone;
+
 	void Start () {
-		
-	}
-	
-	// Update is called once per frame
+        transform.LookAt(phone);
+    }
 	void Update () {
         if (Input.GetKeyDown("space")){
-            transform.LookAt(target);
-            print("looking up");
+            LookUp();  
         }
 	}
+
+    void LookUp(){
+        transform.LookAt(forward);
+        print("looking up");
+        StartCoroutine(Wait());
+        
+        print("looking down");
+    }
+
+    IEnumerator Wait(){
+        yield return new WaitForSeconds(5);
+        transform.LookAt(phone);
+    }
 }
