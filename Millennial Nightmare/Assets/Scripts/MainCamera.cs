@@ -3,35 +3,39 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public class MainCamera : MonoBehaviour {
-    public float rotateSpeed = 1f;
+    public float rotateSpeed = 10f;
     public Transform forwardTarget;
     public Transform phone;
+    private bool isLookingUp = false;
 
 	void Start () {
-        //transform.LookAt(phone);
     }
 	void Update () {
+        //If Space is pressed, start the lookup animation
         if (Input.GetKeyDown("space")){
-            LookUp();  
+            //TODO: Add Cooldown and check that it's off cooldown
+            isLookingUp = true; 
+        }
+        if (isLookingUp) {
+            LookUp();
         }
 	}
 
     void LookUp(){
-        //transform.LookAt(forward);
+        //Sets the target direction and pans the camera to it
         Vector3 targetDir = forwardTarget.position - transform.position;
-        Vector3 newDir = Vector3.RotateTowards(transform.forward, targetDir, rotateSpeed, 0f);
+        Vector3 newDir = Vector3.RotateTowards(transform.forward, targetDir, rotateSpeed * Time.deltaTime, 0f);
         transform.rotation = Quaternion.LookRotation(newDir);
-        print("looking up");
+        //Waits 3 seconds and then pans the camera back to original position
         StartCoroutine(Wait());
-        
-        print("looking down");
     }
 
     IEnumerator Wait(){
         yield return new WaitForSeconds(3);
         Vector3 targetDir = phone.position - transform.position;
-        Vector3 newDir = Vector3.RotateTowards(transform.forward, targetDir, rotateSpeed, 0f);
+        Vector3 newDir = Vector3.RotateTowards(transform.forward, targetDir, rotateSpeed * Time.deltaTime, 0f);
         transform.rotation = Quaternion.LookRotation(newDir);
-        //transform.LookAt(phone);
+        //Stop the looking up animation
+        isLookingUp = false;
     }
 }
