@@ -4,11 +4,11 @@ using UnityEngine;
 
 public class MainCamera : MonoBehaviour {
     public float rotateSpeed = 1f;
-    public Transform forward;
+    public Transform forwardTarget;
     public Transform phone;
 
 	void Start () {
-        transform.LookAt(phone);
+        //transform.LookAt(phone);
     }
 	void Update () {
         if (Input.GetKeyDown("space")){
@@ -17,7 +17,10 @@ public class MainCamera : MonoBehaviour {
 	}
 
     void LookUp(){
-        transform.LookAt(forward);
+        //transform.LookAt(forward);
+        Vector3 targetDir = forwardTarget.position - transform.position;
+        Vector3 newDir = Vector3.RotateTowards(transform.forward, targetDir, rotateSpeed, 0f);
+        transform.rotation = Quaternion.LookRotation(newDir);
         print("looking up");
         StartCoroutine(Wait());
         
@@ -25,7 +28,10 @@ public class MainCamera : MonoBehaviour {
     }
 
     IEnumerator Wait(){
-        yield return new WaitForSeconds(5);
-        transform.LookAt(phone);
+        yield return new WaitForSeconds(3);
+        Vector3 targetDir = phone.position - transform.position;
+        Vector3 newDir = Vector3.RotateTowards(transform.forward, targetDir, rotateSpeed, 0f);
+        transform.rotation = Quaternion.LookRotation(newDir);
+        //transform.LookAt(phone);
     }
 }
