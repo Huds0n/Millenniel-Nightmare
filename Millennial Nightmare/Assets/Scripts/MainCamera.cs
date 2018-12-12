@@ -5,16 +5,20 @@ using UnityEngine.UI;
  using UnityEngine.SceneManagement;
 
 public class MainCamera : MonoBehaviour {
-    public float rotateSpeed = 10f;
+    public float rotateSpeed = 0.1f;
     public Transform forwardTarget;
     public Transform phone;
     private float lookUpCD = 8.0f;
     private float nextLookUp = 0;
     private bool isLookingUp = false;
+    //CooldownBar
     private Text lookupText;
+    public Image LoadingBar;
+
 
 	void Start () {
         lookupText = GameObject.Find("LookUpText").GetComponent<Text>();
+        LoadingBar = GameObject.Find("CooldownBar").GetComponent<Image>();
     }
 
 	void Update () {
@@ -26,6 +30,7 @@ public class MainCamera : MonoBehaviour {
         }
         else {
             lookupText.text = (nextLookUp - Time.time).ToString("00");
+            LoadingBar.fillAmount = 1 - ((nextLookUp - Time.time) / lookUpCD);
         }
         
 
@@ -54,7 +59,7 @@ public class MainCamera : MonoBehaviour {
     void LookUp(){
         //Sets the target direction and pans the camera to it
         Vector3 targetDir = forwardTarget.position - transform.position;
-        Vector3 newDir = Vector3.RotateTowards(transform.forward, targetDir, rotateSpeed * Time.deltaTime, 0f);
+        Vector3 newDir = Vector3.Lerp(transform.forward, targetDir, rotateSpeed * Time.deltaTime);
         transform.rotation = Quaternion.LookRotation(newDir);
         //Waits 3 seconds and then pans the camera back to original position
         StartCoroutine(Wait());
@@ -63,7 +68,7 @@ public class MainCamera : MonoBehaviour {
     IEnumerator Wait(){
         yield return new WaitForSeconds(3);
         Vector3 targetDir = phone.position - transform.position;
-        Vector3 newDir = Vector3.RotateTowards(transform.forward, targetDir, rotateSpeed * Time.deltaTime, 0f);
+        Vector3 newDir = Vector3.Lerp(transform.forward, targetDir, rotateSpeed * Time.deltaTime);
         transform.rotation = Quaternion.LookRotation(newDir);
         //Stop the looking up animation
         isLookingUp = false;
