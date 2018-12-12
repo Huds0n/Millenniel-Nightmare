@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+ using UnityEngine.SceneManagement;
 
 public class MainCamera : MonoBehaviour {
     public float rotateSpeed = 10f;
@@ -44,7 +45,11 @@ public class MainCamera : MonoBehaviour {
         if (isLookingUp) {
             LookUp();
         }
-	}
+        //Restart button
+        if (Input.GetKeyDown("r")){
+            SceneManager.LoadScene("Prototype");
+        }
+    }
 
     void LookUp(){
         //Sets the target direction and pans the camera to it
