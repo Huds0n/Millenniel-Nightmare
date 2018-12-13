@@ -7,14 +7,14 @@ public class Character : MonoBehaviour {
 
     public float moveSpeed = 2f;
     public float jumpSpeed = 3f;
-    public int force = 20;
+    public int force = 40;
     private Text winText;
     private Text loseText;
     private bool stopping;
-    private bool canJump;
-    private bool isGrounded;
+    public bool canJump;
+    public bool isGrounded;
     private Rigidbody rigidCharacter;
-    public LayerMask jumpMask;
+    //public LayerMask jumpMask;
 
     void Start () {
         winText = GameObject.Find("Win").GetComponent<Text>();
@@ -39,35 +39,50 @@ public class Character : MonoBehaviour {
         if (!stopping){
             moveSpeed = 2f;
         }
+    }
+
+        void FixedUpdate() {
+        //TODO: Try to make jump less clunky with raycasting, its back to backis jump due to infinite jump
         //Checking to see if touching the ground
-        RaycastHit hit;
-        isGrounded = Physics.SphereCast(transform.position, 0.5f, -transform.up, out hit, 0.5f);
+        /*RaycastHit hit;
+        isGrounded = Physics.BoxCast(transform.position, transform.localScale, -transform.up, out hit, transform.rotation);
+        Debug.DrawRay(transform.position, -transform.up, Color.red);*/
         if (canJump && isGrounded){
             canJump = false;
             rigidCharacter.AddForce(0, force, 0, ForceMode.Impulse);
         }
         // Jump
-        if (Input.GetKeyDown(KeyCode.W))
-        {
+        if (Input.GetKeyDown(KeyCode.Space)){
             canJump = true;
         }
-    } 
+    }
+    //Basic jump from objects tagged ground
     void OnCollisionEnter(Collision col) {
+        if (col.gameObject.tag == "Ground")
+        {
+            isGrounded = true;
+        }
         //Checking Collision with invisible Win Wall
         if (col.gameObject.name == "Win") {
             winText.text = "wow...you win";
             Time.timeScale = 0;
         }
         //Checking Collision with Enemy or Car to lose
-        if (col.gameObject.tag == "Enemy")
-        {
+        if (col.gameObject.tag == "Enemy"){
             loseText.text = "Git Gud";
             Time.timeScale = 0;
         }
-        if (col.gameObject.tag == "EnemyCar")
-        {
+        if (col.gameObject.tag == "EnemyCar"){
             loseText.text = "Git Gud";
             Time.timeScale = 0;
+        }
+    }
+    //Exiting jump from collision
+    void OnCollisionExit(Collision collision)
+    {
+        if (isGrounded)
+        {
+            isGrounded = false;
         }
     }
 }
