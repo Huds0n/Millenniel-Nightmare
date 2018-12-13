@@ -34,8 +34,8 @@ public class MainCamera : MonoBehaviour {
         }
         
 
-        //If Space is pressed, start the lookup animation
-        if (Input.GetKeyDown("space")){
+        //If W is pressed, start the lookup animation
+        if (Input.GetKeyDown("w")){
             //Checks if lookUp is on cooldown
             if (Time.time > nextLookUp)
             {
@@ -53,6 +53,7 @@ public class MainCamera : MonoBehaviour {
         //Restart button
         if (Input.GetKeyDown("r")){
             SceneManager.LoadScene("Prototype");
+            Time.timeScale = 1;
         }
     }
 

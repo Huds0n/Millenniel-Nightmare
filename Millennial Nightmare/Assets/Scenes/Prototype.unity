@@ -446,9 +446,9 @@ GameObject:
   - component: {fileID: 123513077}
   - component: {fileID: 123513076}
   - component: {fileID: 123513075}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Sidewalk
-  m_TagString: Untagged
+  m_TagString: Ground
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -726,7 +726,7 @@ MonoBehaviour:
       m_Calls: []
     m_TypeName: UnityEngine.UI.MaskableGraphic+CullStateChangedEvent, UnityEngine.UI,
       Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
-  m_Sprite: {fileID: 10913, guid: 0000000000000000f000000000000000, type: 0}
+  m_Sprite: {fileID: 21300000, guid: 23be3a9aecad3a14bb29d3be7f4f8009, type: 3}
   m_Type: 3
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -752,7 +752,7 @@ GameObject:
   - component: {fileID: 282840813}
   - component: {fileID: 282840811}
   - component: {fileID: 282840812}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: Main Camera
   m_TagString: MainCamera
   m_Icon: {fileID: 0}
@@ -842,9 +842,9 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 285416296}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Paths
-  m_TagString: Untagged
+  m_TagString: Ground
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -1140,9 +1140,9 @@ GameObject:
   - component: {fileID: 363322762}
   - component: {fileID: 363322761}
   - component: {fileID: 363322760}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Sidewalk (9)
-  m_TagString: Untagged
+  m_TagString: Ground
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -1484,9 +1484,9 @@ GameObject:
   - component: {fileID: 441403025}
   - component: {fileID: 441403024}
   - component: {fileID: 441403023}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Sidewalk (1)
-  m_TagString: Untagged
+  m_TagString: Ground
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -1608,7 +1608,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 517177656}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: LootAtObj
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1809,9 +1809,9 @@ GameObject:
   - component: {fileID: 570882758}
   - component: {fileID: 570882757}
   - component: {fileID: 570882756}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Road
-  m_TagString: Untagged
+  m_TagString: Ground
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -2066,9 +2066,9 @@ GameObject:
   - component: {fileID: 652176704}
   - component: {fileID: 652176703}
   - component: {fileID: 652176702}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Sidewalk (8)
-  m_TagString: Untagged
+  m_TagString: Ground
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -2236,9 +2236,9 @@ GameObject:
   - component: {fileID: 721844325}
   - component: {fileID: 721844324}
   - component: {fileID: 721844323}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Sidewalk (3)
-  m_TagString: Untagged
+  m_TagString: Ground
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -2746,7 +2746,7 @@ GameObject:
   - component: {fileID: 1090508119}
   - component: {fileID: 1090508118}
   - component: {fileID: 1090508117}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: Capsule
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -2971,9 +2971,9 @@ GameObject:
   - component: {fileID: 1211671015}
   - component: {fileID: 1211671014}
   - component: {fileID: 1211671013}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Sidewalk (5)
-  m_TagString: Untagged
+  m_TagString: Ground
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -3202,9 +3202,9 @@ GameObject:
   - component: {fileID: 1302497065}
   - component: {fileID: 1302497064}
   - component: {fileID: 1302497063}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Sidewalk (7)
-  m_TagString: Untagged
+  m_TagString: Ground
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -3835,9 +3835,9 @@ GameObject:
   - component: {fileID: 1779781617}
   - component: {fileID: 1779781616}
   - component: {fileID: 1779781615}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Sidewalk (6)
-  m_TagString: Untagged
+  m_TagString: Ground
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -3920,9 +3920,9 @@ GameObject:
   - component: {fileID: 1798058191}
   - component: {fileID: 1798058190}
   - component: {fileID: 1798058189}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Sidewalk (2)
-  m_TagString: Untagged
+  m_TagString: Ground
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -4048,7 +4048,7 @@ MonoBehaviour:
       m_Calls: []
     m_TypeName: UnityEngine.UI.MaskableGraphic+CullStateChangedEvent, UnityEngine.UI,
       Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
-  m_Sprite: {fileID: 10913, guid: 0000000000000000f000000000000000, type: 0}
+  m_Sprite: {fileID: 21300000, guid: 23be3a9aecad3a14bb29d3be7f4f8009, type: 3}
   m_Type: 3
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -4372,9 +4372,9 @@ GameObject:
   - component: {fileID: 1905807611}
   - component: {fileID: 1905807610}
   - component: {fileID: 1905807609}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Sidewalk
-  m_TagString: Untagged
+  m_TagString: Ground
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -4542,9 +4542,9 @@ GameObject:
   - component: {fileID: 1917080231}
   - component: {fileID: 1917080230}
   - component: {fileID: 1917080229}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Sidewalk (4)
-  m_TagString: Untagged
+  m_TagString: Ground
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -4629,9 +4629,9 @@ GameObject:
   - component: {fileID: 1943218774}
   - component: {fileID: 1943218773}
   - component: {fileID: 1943218777}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: Character
-  m_TagString: Untagged
+  m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -4643,7 +4643,7 @@ Transform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1943218771}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -6.505, y: 0, z: -9.871}
+  m_LocalPosition: {x: -6.505, y: 0.74, z: -9.871}
   m_LocalScale: {x: 1, y: 2.0322995, z: 1}
   m_Children:
   - {fileID: 1090508116}
@@ -4664,6 +4664,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   moveSpeed: 4
+  jumpSpeed: 3
+  force: 3
+  canJump: 0
+  isGrounded: 0
 --- !u!65 &1943218774
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -4732,7 +4736,7 @@ Rigidbody:
   m_IsKinematic: 0
   m_Interpolate: 0
   m_Constraints: 112
-  m_CollisionDetection: 0
+  m_CollisionDetection: 2
 --- !u!1 &1964561872
 GameObject:
   m_ObjectHideFlags: 0
@@ -4744,9 +4748,9 @@ GameObject:
   - component: {fileID: 1964561876}
   - component: {fileID: 1964561875}
   - component: {fileID: 1964561874}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Sidewalk
-  m_TagString: Untagged
+  m_TagString: Ground
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
