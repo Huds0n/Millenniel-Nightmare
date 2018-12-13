@@ -446,7 +446,7 @@ GameObject:
   - component: {fileID: 123513077}
   - component: {fileID: 123513076}
   - component: {fileID: 123513075}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Sidewalk
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -842,7 +842,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 285416296}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Paths
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1140,7 +1140,7 @@ GameObject:
   - component: {fileID: 363322762}
   - component: {fileID: 363322761}
   - component: {fileID: 363322760}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Sidewalk (9)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1484,7 +1484,7 @@ GameObject:
   - component: {fileID: 441403025}
   - component: {fileID: 441403024}
   - component: {fileID: 441403023}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Sidewalk (1)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1809,7 +1809,7 @@ GameObject:
   - component: {fileID: 570882758}
   - component: {fileID: 570882757}
   - component: {fileID: 570882756}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Road
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -2066,7 +2066,7 @@ GameObject:
   - component: {fileID: 652176704}
   - component: {fileID: 652176703}
   - component: {fileID: 652176702}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Sidewalk (8)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -2236,7 +2236,7 @@ GameObject:
   - component: {fileID: 721844325}
   - component: {fileID: 721844324}
   - component: {fileID: 721844323}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Sidewalk (3)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -2971,7 +2971,7 @@ GameObject:
   - component: {fileID: 1211671015}
   - component: {fileID: 1211671014}
   - component: {fileID: 1211671013}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Sidewalk (5)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -3202,7 +3202,7 @@ GameObject:
   - component: {fileID: 1302497065}
   - component: {fileID: 1302497064}
   - component: {fileID: 1302497063}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Sidewalk (7)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -3835,7 +3835,7 @@ GameObject:
   - component: {fileID: 1779781617}
   - component: {fileID: 1779781616}
   - component: {fileID: 1779781615}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Sidewalk (6)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -3920,7 +3920,7 @@ GameObject:
   - component: {fileID: 1798058191}
   - component: {fileID: 1798058190}
   - component: {fileID: 1798058189}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Sidewalk (2)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -4372,7 +4372,7 @@ GameObject:
   - component: {fileID: 1905807611}
   - component: {fileID: 1905807610}
   - component: {fileID: 1905807609}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Sidewalk
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -4542,7 +4542,7 @@ GameObject:
   - component: {fileID: 1917080231}
   - component: {fileID: 1917080230}
   - component: {fileID: 1917080229}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Sidewalk (4)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -4664,6 +4664,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   moveSpeed: 4
+  jumpSpeed: 3
+  force: 20
+  jumpMask:
+    serializedVersion: 2
+    m_Bits: 1024
 --- !u!65 &1943218774
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -4744,7 +4749,7 @@ GameObject:
   - component: {fileID: 1964561876}
   - component: {fileID: 1964561875}
   - component: {fileID: 1964561874}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Sidewalk
   m_TagString: Untagged
   m_Icon: {fileID: 0}

@@ -53,6 +53,7 @@ public class MainCamera : MonoBehaviour {
         //Restart button
         if (Input.GetKeyDown("r")){
             SceneManager.LoadScene("Prototype");
+            Time.timeScale = 1;
         }
     }
 

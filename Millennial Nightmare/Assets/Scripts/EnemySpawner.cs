@@ -14,10 +14,9 @@ public class EnemySpawner : MonoBehaviour {
 	}
 
 	void Update () {
-       // if(whenToSpawn == true){
-           // SpawnEnemyPerson();
-        //}
+     // TODO: Set spawn rate
 	}
+    //Spawning which enemy ay which location and rotation
     void SpawnEnemyPerson() {
         whatToSpawn[1] = Instantiate(enemy[1],spawners[0].transform.position, Quaternion.Euler(0, 90, 0))as GameObject;
         whatToSpawn[1] = Instantiate(enemy[1], spawners[1].transform.position, Quaternion.Euler(0, -90, 0)) as GameObject;
