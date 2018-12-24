@@ -15,6 +15,9 @@ public class Character : MonoBehaviour {
     public bool isGrounded;
     private Rigidbody rigidCharacter;
     //public LayerMask jumpMask;
+    //Stopping Variables
+    public float levelStoppingTime = 5.0f;
+    public float stoppingTime = 5.0f;
 
     void Start () {
         winText = GameObject.Find("Win").GetComponent<Text>();
@@ -30,8 +33,16 @@ public class Character : MonoBehaviour {
         transform.Translate(Vector3.right * Time.deltaTime * Input.GetAxis("Horizontal") * moveSpeed);
         //Stopping by changing movement speed
         if (Input.GetKey("s")){
+            if (stoppingTime <= 0) {
+                stoppingTime = 0;
+                print("No More Stopping Allowed");
+                moveSpeed = 2f;
+                return;
+            }
             stopping = true;
             moveSpeed = 0f;
+            //Subtract time left stopping this level
+            stoppingTime -= Time.deltaTime;
         }
         else{
             stopping = false;
