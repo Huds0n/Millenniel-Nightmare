@@ -22,10 +22,10 @@ public class MainCamera : MonoBehaviour {
 
 
 	void Start () {
-        lookupText = GameObject.Find("LookUpText").GetComponent<Text>();
+        lookupText = GameObject.Find("LookUpCD").GetComponent<Text>();
         LoadingBar = GameObject.Find("CooldownBar").GetComponent<Image>();
 
-        StoppingText = GameObject.Find("StoppingText").GetComponent<Text>();
+        StoppingText = GameObject.Find("StoppingCD").GetComponent<Text>();
         StoppingBar = GameObject.Find("StoppingCooldownBar").GetComponent<Image>();
 
         player = GameObject.Find("Character").GetComponent<Character>();
@@ -39,7 +39,7 @@ public class MainCamera : MonoBehaviour {
             lookupText.text = "READY";
         }
         else {
-            lookupText.text = (nextLookUp - Time.time).ToString("00");
+            lookupText.text = (nextLookUp - Time.time).ToString("00.00");
             LoadingBar.fillAmount = 1 - ((nextLookUp - Time.time) / lookUpCD);
         }
         //Prints the time left on the character stopping this level
@@ -48,7 +48,7 @@ public class MainCamera : MonoBehaviour {
             StoppingText.text = "No More Stopping!!";
         }
         else {
-            StoppingText.text = player.stoppingTime.ToString("00");
+            StoppingText.text = player.stoppingTime.ToString("00.00");
             StoppingBar.fillAmount = 1 - ((player.levelStoppingTime - player.stoppingTime) / player.levelStoppingTime);
         }
         
