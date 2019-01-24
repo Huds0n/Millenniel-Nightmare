@@ -2933,8 +2933,9 @@ GameObject:
   - component: {fileID: 1090508119}
   - component: {fileID: 1090508118}
   - component: {fileID: 1090508117}
+  - component: {fileID: 1090508120}
   m_Layer: 9
-  m_Name: Capsule
+  m_Name: Phone
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -3008,6 +3009,23 @@ MeshFilter:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1090508115}
   m_Mesh: {fileID: 10208, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!114 &1090508120
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1090508115}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 285ed1a937bb0bd4994bbca88ace8c2c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  colours:
+  - Red
+  - Green
+  - Blue
+  - Yellow
+  coloursToRemember: []
 --- !u!1 &1120608426
 GameObject:
   m_ObjectHideFlags: 0
@@ -5073,9 +5091,7 @@ MonoBehaviour:
   isGrounded: 0
   levelStoppingTime: 5
   stoppingTime: 5
-  forwardTarget: {fileID: 517177656}
-  phone: {fileID: 1090508116}
-  rotateSpeed: 0.1
+  mainCamera: {fileID: 0}
 --- !u!65 &1943218774
 BoxCollider:
   m_ObjectHideFlags: 0
