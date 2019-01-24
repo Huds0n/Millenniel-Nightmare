@@ -18,15 +18,19 @@ public class Character : MonoBehaviour {
     //Stopping Variables
     public float levelStoppingTime = 5.0f;
     public float stoppingTime = 5.0f;
+    //Look Up Varibles
+    public MainCamera mainCamera;
+    private bool isLookingUp = false;
+    private float nextLookUp = 0;
 
     void Start () {
         winText = GameObject.Find("Win").GetComponent<Text>();
         loseText = GameObject.Find("Lose").GetComponent<Text>();
         rigidCharacter = GetComponent<Rigidbody>();
+        mainCamera = GameObject.Find("Main Camera").GetComponent<MainCamera>();
     }
 
-    void Update()
-    {
+    void Update() {
         //Forward movement
         transform.Translate(Vector3.forward * Time.deltaTime * moveSpeed);
         //Left and right movement
@@ -49,6 +53,25 @@ public class Character : MonoBehaviour {
         }
         if (!stopping){
             moveSpeed = 2f;
+        }
+        //Look Up Animation
+        if (Input.GetKeyDown("w"))
+        {
+            //Checks if lookUp is on cooldown
+            if (Time.time > nextLookUp)
+            {
+                isLookingUp = true;
+                nextLookUp = Time.time + Globals.LOOK_UP_CD;
+            }
+            else
+            {
+                print("on Cooldown");
+            }
+
+        }
+        if (isLookingUp)
+        {
+            mainCamera.LookUp();
         }
     }
 
@@ -89,11 +112,21 @@ public class Character : MonoBehaviour {
         }
     }
     //Exiting jump from collision
-    void OnCollisionExit(Collision collision)
-    {
+    void OnCollisionExit(Collision collision) {
         if (isGrounded)
         {
             isGrounded = false;
         }
+    }
+
+    public float getNextLookUp() {
+        return nextLookUp;
+    }
+
+    public bool getIsLookingUp() {
+        return isLookingUp;
+    }
+    public void setIsLookingUp(bool newVal) {
+        isLookingUp = newVal;
     }
 }
