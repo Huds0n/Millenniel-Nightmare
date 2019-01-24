@@ -36,12 +36,8 @@ public class ColourGame : MonoBehaviour {
         if (--numColours == 0) {
             CancelInvoke("ChooseColour");
             print("No more colours");
-            print(coloursToRemember[0]);
-            print(coloursToRemember[1]);
-            print(coloursToRemember[2]);
-            print(coloursToRemember[3]);
-            print(coloursToRemember[4]);
-
         }
     }
+
+    //This function asks for input and checks each input against what it should be
 }
