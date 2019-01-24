@@ -40,4 +40,18 @@ public class ColourGame : MonoBehaviour {
     }
 
     //This function asks for input and checks each input against what it should be
+    void EnterColours() {
+        for(int i = 0; i < 5; i++) {
+            CheckColour(input, coloursToRemember[i]);
+        }
+    }
+
+    bool CheckColour(string input, string colour) {
+        if (input == colour) {
+            return true;
+        }
+        else {
+            return false;
+        }
+    }
 }
