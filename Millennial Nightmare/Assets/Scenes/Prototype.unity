@@ -5073,6 +5073,9 @@ MonoBehaviour:
   isGrounded: 0
   levelStoppingTime: 5
   stoppingTime: 5
+  forwardTarget: {fileID: 517177656}
+  phone: {fileID: 1090508116}
+  rotateSpeed: 0.1
 --- !u!65 &1943218774
 BoxCollider:
   m_ObjectHideFlags: 0

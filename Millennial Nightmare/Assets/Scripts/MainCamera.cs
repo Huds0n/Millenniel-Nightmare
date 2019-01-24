@@ -2,15 +2,12 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
- using UnityEngine.SceneManagement;
+using UnityEngine.SceneManagement;
 
 public class MainCamera : MonoBehaviour {
     public float rotateSpeed = 0.1f;
     public Transform forwardTarget;
     public Transform phone;
-    private float lookUpCD = 8.0f;
-    private float nextLookUp = 0;
-    private bool isLookingUp = false;
     //CooldownBar
     private Text lookupText;
     public Image LoadingBar;
@@ -34,13 +31,13 @@ public class MainCamera : MonoBehaviour {
 	void Update () {
 
         //Prints the current cooldown of lookup on screen
-        if (Time.time > nextLookUp)
+        if (Time.time > player.getNextLookUp())
         {
             lookupText.text = "READY";
         }
         else {
-            lookupText.text = (nextLookUp - Time.time).ToString("00.00");
-            LoadingBar.fillAmount = 1 - ((nextLookUp - Time.time) / lookUpCD);
+            lookupText.text = (player.getNextLookUp() - Time.time).ToString("00.00");
+            LoadingBar.fillAmount = 1 - ((player.getNextLookUp() - Time.time) / Globals.LOOK_UP_CD);
         }
         //Prints the time left on the character stopping this level
         if (player.stoppingTime <= 0)
@@ -51,24 +48,7 @@ public class MainCamera : MonoBehaviour {
             StoppingText.text = player.stoppingTime.ToString("00.00");
             StoppingBar.fillAmount = 1 - ((player.levelStoppingTime - player.stoppingTime) / player.levelStoppingTime);
         }
-        
 
-        //If W is pressed, start the lookup animation
-        if (Input.GetKeyDown("w")){
-            //Checks if lookUp is on cooldown
-            if (Time.time > nextLookUp)
-            {
-                isLookingUp = true;
-                nextLookUp = Time.time + lookUpCD;
-            }
-            else {
-                print("on Cooldown");
-            }
-            
-        }
-        if (isLookingUp) {
-            LookUp();
-        }
         //Restart button
         if (Input.GetKeyDown("r")){
             SceneManager.LoadScene("Prototype");
@@ -76,7 +56,7 @@ public class MainCamera : MonoBehaviour {
         }
     }
 
-    void LookUp(){
+    public void LookUp(){
         //Sets the target direction and pans the camera to it
         Vector3 targetDir = forwardTarget.position - transform.position;
         Vector3 newDir = Vector3.Lerp(transform.forward, targetDir, rotateSpeed * Time.deltaTime);
@@ -91,6 +71,6 @@ public class MainCamera : MonoBehaviour {
         Vector3 newDir = Vector3.Lerp(transform.forward, targetDir, rotateSpeed * Time.deltaTime);
         transform.rotation = Quaternion.LookRotation(newDir);
         //Stop the looking up animation
-        isLookingUp = false;
+        player.setIsLookingUp(false);
     }
 }
