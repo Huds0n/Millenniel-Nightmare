@@ -2,13 +2,21 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
+using TMPro;
 
 public class ColourGame : MonoBehaviour {
-
+    private Text loseText;
+    //Minigame Level Counters
+    private int currentLevel;
+    private int numLevels;
+    //Timer to track level time
+    private float levelTimeLeft = 5.0f;
     //Colours
     public string[] colours = { "Red", "Green", "Blue", "Yellow" };
-    public string[] coloursToRemember;
+    public ArrayList coloursToRemember;
     public string currentColorOn;
+    public string colourToChoose;
     //random number generator
     private static readonly System.Random getrandom = new System.Random();
     //num of colours to print
@@ -18,6 +26,9 @@ public class ColourGame : MonoBehaviour {
     private SpriteRenderer greenButton;
     private SpriteRenderer yellowButton;
     private SpriteRenderer blueButton;
+    //Time and Level Counter on Phone
+    private TextMeshPro levelCounter;
+    private TextMeshPro levelTimer;
     //8 colour options
     Color redOff = new Color(1, 0.2f, 0.2f, 0.5f);
     Color redOn = new Color(1, 0, 0, 1);
@@ -30,12 +41,19 @@ public class ColourGame : MonoBehaviour {
     //Light up time
     private float lightTime = 2.5f;
     private float currentTimeOn = 0.0f;
+    //Listen Time or Selecting Time
+    private bool SimonSaying;
 
     // Use this for initialization
     void Start () {
+        //For when wrong button is pressed
+        loseText = GameObject.Find("Lose").GetComponent<Text>();
+        //Simon is always talking first
+        SimonSaying = true;
+
         numColours = 5;
         InvokeRepeating("ChooseColour", 0.0f, 3.0f);
-        coloursToRemember = new string[numColours];
+        coloursToRemember = new ArrayList();
 
         //Initialise buttons on phone
         redButton = GameObject.Find("Coloured Blocks Red").GetComponent<SpriteRenderer>();
@@ -48,6 +66,17 @@ public class ColourGame : MonoBehaviour {
         greenButton.color = greenOff;
         yellowButton.color = yellowOff;
         blueButton.color = blueOff;
+
+        //Initialise Level Counter and Timer
+        levelCounter = GameObject.Find("Minigame Level Counter").GetComponent<TextMeshPro>();
+        levelTimer = GameObject.Find("Minigame Level Time").GetComponent<TextMeshPro>();
+
+        //Initialise Levels for Minigame
+        currentLevel = 1;
+        numLevels = 3;
+
+        //TextMesh Testing
+        levelCounter.text = currentLevel.ToString() + "/" + numLevels.ToString();
     }
 	
 	// Update is called once per frame
@@ -73,7 +102,34 @@ public class ColourGame : MonoBehaviour {
             currentColorOn = null;
             currentTimeOn = 0.0f;
         }
-	}
+
+        if (!SimonSaying)
+        {
+            if (coloursToRemember.Count == 0)
+            {
+                print("Well Done");
+                SimonSaying = true;
+            }
+            else
+            {
+                colourToChoose = (String)coloursToRemember[0];
+                print(colourToChoose.ToString());
+                //Deal with timer at bottom
+                if (levelTimeLeft <= 0)
+                {
+                    loseText.text = "Git Gud";
+                    Time.timeScale = 0;
+                }
+                else {
+                    levelTimeLeft -= Time.deltaTime;
+                }
+            }
+        }
+
+        //Show the time left
+        levelTimer.text = levelTimeLeft.ToString("0.00");
+
+    }
 
     //Chooses a random colour and prints to console
     void ChooseColour() {
@@ -84,7 +140,7 @@ public class ColourGame : MonoBehaviour {
         //Make the button light up
         if (nextColour == "Red"){
             currentColorOn = "Red";
-            redButton.color = Color.red;
+            redButton.color = redOn;
         }
         else if (nextColour == "Green"){
             currentColorOn = "Green";
@@ -98,29 +154,71 @@ public class ColourGame : MonoBehaviour {
             currentColorOn = "Blue";
             blueButton.color = blueOn;
         }
-        coloursToRemember[colourNumber - 1] = nextColour;
+        coloursToRemember.Add(nextColour);
         print("Colour Number " + colourNumber.ToString() + ": "+ nextColour);
         //After set number of colours, stop choosing more
         if (--numColours == 0) {
             CancelInvoke("ChooseColour");
+            SimonSaying = false;
             print("No more colours");
+            print(SimonSaying.ToString());
         }
     }
 
-    //This function asks for input and checks each input against what it should be
-    void EnterColours() {
-        for(int i = 0; i < 5; i++) {
-            string input = "hi";
-            CheckColour(input, coloursToRemember[i]);
+    //For the blue button being clicked
+    public void OnBlueButtonClick() {
+        if (colourToChoose == "Blue") {
+            coloursToRemember.RemoveAt(0);
+            print("right");
         }
+        else{
+            loseText.text = "Git Gud";
+            Time.timeScale = 0;
+        };
     }
 
-    bool CheckColour(string input, string colour) {
-        if (input == colour) {
-            return true;
+    //For the red button being clicked
+    public void OnRedButtonClick()
+    {
+        if (colourToChoose == "Red")
+        {
+            coloursToRemember.RemoveAt(0);
+            print("right");
         }
-        else {
-            return false;
+        else
+        {
+            loseText.text = "Git Gud";
+            Time.timeScale = 0;
+        };
+    }
+
+    //For the green button being clicked
+    public void OnGreenButtonClick()
+    {
+        if (colourToChoose == "Green")
+        {
+            coloursToRemember.RemoveAt(0);
+            print("right");
         }
+        else
+        {
+            loseText.text = "Git Gud";
+            Time.timeScale = 0;
+        };
+    }
+
+    //For the yellow button being clicked
+    public void OnYellowButtonClick()
+    {
+        if (colourToChoose == "Yellow")
+        {
+            coloursToRemember.RemoveAt(0);
+            print("right");
+        }
+        else
+        {
+            loseText.text = "Git Gud";
+            Time.timeScale = 0;
+        };
     }
 }
