@@ -43,6 +43,8 @@ public class ColourGame : MonoBehaviour {
     private float currentTimeOn = 0.0f;
     //Listen Time or Selecting Time
     private bool SimonSaying;
+    //Collider for yellow button
+    private Collider2D yellowButtonCollider;
 
     // Use this for initialization
     void Start () {
@@ -60,6 +62,10 @@ public class ColourGame : MonoBehaviour {
         greenButton = GameObject.Find("Coloured Blocks Green").GetComponent<SpriteRenderer>();
         yellowButton = GameObject.Find("Coloured Blocks Yellow").GetComponent<SpriteRenderer>();
         blueButton = GameObject.Find("Coloured Blocks Blue").GetComponent<SpriteRenderer>();
+
+        //Initialise button colliders
+        Vector2 YellowSize = yellowButton.sprite.bounds.size;
+        yellowButton.GetComponent<BoxCollider2D>().size = YellowSize;
 
         //Initialise their colours as "off"
         redButton.color = redOff;
@@ -114,13 +120,15 @@ public class ColourGame : MonoBehaviour {
             {
                 colourToChoose = (String)coloursToRemember[0];
                 print(colourToChoose.ToString());
+
                 //Deal with timer at bottom
                 if (levelTimeLeft <= 0)
                 {
-                    loseText.text = "Git Gud";
+                    loseText.text = "git gud";
                     Time.timeScale = 0;
                 }
-                else {
+                else
+                {
                     levelTimeLeft -= Time.deltaTime;
                 }
             }
@@ -128,7 +136,7 @@ public class ColourGame : MonoBehaviour {
 
         //Show the time left
         levelTimer.text = levelTimeLeft.ToString("0.00");
-
+        print("Leaving update");
     }
 
     //Chooses a random colour and prints to console
@@ -161,64 +169,18 @@ public class ColourGame : MonoBehaviour {
             CancelInvoke("ChooseColour");
             SimonSaying = false;
             print("No more colours");
-            print(SimonSaying.ToString());
         }
     }
 
-    //For the blue button being clicked
-    public void OnBlueButtonClick() {
-        if (colourToChoose == "Blue") {
-            coloursToRemember.RemoveAt(0);
-            print("right");
-        }
-        else{
-            loseText.text = "Git Gud";
-            Time.timeScale = 0;
-        };
-    }
-
-    //For the red button being clicked
-    public void OnRedButtonClick()
-    {
-        if (colourToChoose == "Red")
+    public void checkColour(string colour) {
+        if (colour == colourToChoose)
         {
             coloursToRemember.RemoveAt(0);
             print("right");
         }
-        else
-        {
+        else {
             loseText.text = "Git Gud";
             Time.timeScale = 0;
-        };
-    }
-
-    //For the green button being clicked
-    public void OnGreenButtonClick()
-    {
-        if (colourToChoose == "Green")
-        {
-            coloursToRemember.RemoveAt(0);
-            print("right");
         }
-        else
-        {
-            loseText.text = "Git Gud";
-            Time.timeScale = 0;
-        };
-    }
-
-    //For the yellow button being clicked
-    public void OnYellowButtonClick()
-    {
-        if (colourToChoose == "Yellow")
-        {
-            coloursToRemember.RemoveAt(0);
-            print("right");
-        }
-        else
-        {
-            loseText.text = "Git Gud";
-            Time.timeScale = 0;
-        };
     }
 }
