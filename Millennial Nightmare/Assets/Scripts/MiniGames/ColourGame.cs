@@ -12,6 +12,7 @@ public class ColourGame : MonoBehaviour {
     private int numLevels;
     //Timer to track level time
     private float levelTimeLeft = 5.0f;
+    private bool levelTimerOn;
     //Colours
     public string[] colours = { "Red", "Green", "Blue", "Yellow" };
     public ArrayList coloursToRemember;
@@ -21,6 +22,7 @@ public class ColourGame : MonoBehaviour {
     private static readonly System.Random getrandom = new System.Random();
     //num of colours to print
     private int numColours;
+    private int coloursThisRound;
     //Coloured buttons on phone
     private SpriteRenderer redButton;
     private SpriteRenderer greenButton;
@@ -39,7 +41,7 @@ public class ColourGame : MonoBehaviour {
     Color blueOff = new Color(0.2f, 0.2f, 1, 0.5f);
     Color blueOn = new Color(0, 0, 1, 1);
     //Light up time
-    private float lightTime = 2.5f;
+    private float lightTime = 1.3f;
     private float currentTimeOn = 0.0f;
     //Listen Time or Selecting Time
     private bool SimonSaying;
@@ -53,8 +55,9 @@ public class ColourGame : MonoBehaviour {
         //Simon is always talking first
         SimonSaying = true;
 
-        numColours = 5;
-        InvokeRepeating("ChooseColour", 0.0f, 3.0f);
+        numColours = 3;
+        coloursThisRound = 3;
+        InvokeRepeating("ChooseColour", lightTime, lightTime);
         coloursToRemember = new ArrayList();
 
         //Initialise buttons on phone
@@ -76,6 +79,7 @@ public class ColourGame : MonoBehaviour {
         //Initialise Level Counter and Timer
         levelCounter = GameObject.Find("Minigame Level Counter").GetComponent<TextMeshPro>();
         levelTimer = GameObject.Find("Minigame Level Time").GetComponent<TextMeshPro>();
+        levelTimerOn = false;
 
         //Initialise Levels for Minigame
         currentLevel = 1;
@@ -87,34 +91,41 @@ public class ColourGame : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
+        if (currentLevel > numLevels) {
+            levelCounter.fontSize = 10;
+            levelCounter.text = "Done";
+            turnOffButton(currentColorOn);
+            return;
+        }
         if (currentColorOn != null) {
             currentTimeOn += Time.deltaTime;
         }
-        if (currentTimeOn >= lightTime) {
-            if (currentColorOn == "Red")
-            {
-                redButton.color = redOff;
+        if (SimonSaying && currentTimeOn >= (lightTime - 0.3)) {
+            turnOffButton(currentColorOn);
+            //If all colours are done, change simon talking and timer bool
+            if (numColours == 0) {
+                SimonSaying = false;
+                levelTimerOn = true;
             }
-            else if (currentColorOn == "Green")
-            {
-                greenButton.color = greenOff;
-            }
-            else if (currentColorOn == "Yellow") {
-                yellowButton.color = yellowOff;
-            }
-            else{
-                blueButton.color = blueOff;
-            }
-            currentColorOn = null;
-            currentTimeOn = 0.0f;
         }
 
         if (!SimonSaying)
         {
+            if (currentTimeOn >= 0.2) {
+                turnOffButton(currentColorOn);
+            }
             if (coloursToRemember.Count == 0)
             {
-                print("Well Done");
                 SimonSaying = true;
+                levelTimerOn = false;
+                levelTimeLeft = 5.0f;
+                currentLevel++;
+                coloursThisRound++;
+                numColours = coloursThisRound;
+                if (!(currentLevel > numLevels))
+                {
+                    InvokeRepeating("ChooseColour", lightTime, lightTime);
+                }
             }
             else
             {
@@ -127,7 +138,7 @@ public class ColourGame : MonoBehaviour {
                     loseText.text = "git gud";
                     Time.timeScale = 0;
                 }
-                else
+                else if (levelTimerOn)
                 {
                     levelTimeLeft -= Time.deltaTime;
                 }
@@ -136,51 +147,83 @@ public class ColourGame : MonoBehaviour {
 
         //Show the time left
         levelTimer.text = levelTimeLeft.ToString("0.00");
-        print("Leaving update");
+        //Show current level
+        levelCounter.text = currentLevel.ToString() + "/" + numLevels.ToString();
     }
 
     //Chooses a random colour and prints to console
     void ChooseColour() {
-        int colourNumber = 6 - numColours;
+        int colourNumber = (coloursThisRound + 1) - numColours;
         int index = getrandom.Next(4);
         string nextColour = colours[index];
 
         //Make the button light up
-        if (nextColour == "Red"){
-            currentColorOn = "Red";
-            redButton.color = redOn;
-        }
-        else if (nextColour == "Green"){
-            currentColorOn = "Green";
-            greenButton.color = greenOn;
-        }
-        else if (nextColour == "Yellow"){
-            currentColorOn = "Yellow";
-            yellowButton.color = yellowOn;
-        }
-        else {
-            currentColorOn = "Blue";
-            blueButton.color = blueOn;
-        }
+        activateButton(nextColour);
         coloursToRemember.Add(nextColour);
-        print("Colour Number " + colourNumber.ToString() + ": "+ nextColour);
         //After set number of colours, stop choosing more
         if (--numColours == 0) {
             CancelInvoke("ChooseColour");
-            SimonSaying = false;
-            print("No more colours");
         }
     }
 
     public void checkColour(string colour) {
-        if (colour == colourToChoose)
+        if (!SimonSaying)
         {
-            coloursToRemember.RemoveAt(0);
-            print("right");
+            if (colour == colourToChoose)
+            {
+                activateButton(colour);
+                coloursToRemember.RemoveAt(0);
+                print("right");
+            }
+            else
+            {
+                loseText.text = "Git Gud";
+                Time.timeScale = 0;
+            }
+        }
+    }
+
+    private void activateButton(string colour)
+    {
+        if (colour == "Blue")
+        {
+            currentColorOn = "Blue";
+            blueButton.color = blueOn;
+        }
+        else if (colour == "Red")
+        {
+            currentColorOn = "Red";
+            redButton.color = redOn;
+        }
+        else if (colour == "Yellow")
+        {
+            currentColorOn = "Yellow";
+            yellowButton.color = yellowOn;
         }
         else {
-            loseText.text = "Git Gud";
-            Time.timeScale = 0;
+            currentColorOn = "Green";
+            greenButton.color = greenOn;
         }
+    }
+
+    private void turnOffButton(string colour) {
+        if (colour == "Blue")
+        {
+            blueButton.color = blueOff;
+        }
+        else if (colour == "Red")
+        {
+            redButton.color = redOff;
+        }
+        else if (colour == "Yellow")
+        {
+            yellowButton.color = yellowOff;
+        }
+        else
+        {
+            greenButton.color = greenOff;
+        }
+        currentColorOn = null;
+        currentTimeOn = 0.0f;
     }
 }
