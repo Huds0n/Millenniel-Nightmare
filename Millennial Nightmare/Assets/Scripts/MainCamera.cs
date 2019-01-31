@@ -25,7 +25,7 @@ public class MainCamera : MonoBehaviour {
         StoppingText = GameObject.Find("StoppingCD").GetComponent<Text>();
         StoppingBar = GameObject.Find("StoppingCooldownBar").GetComponent<Image>();
 
-        player = GameObject.Find("Character").GetComponent<Character>();
+        player = GameObject.Find("Character_01").GetComponent<Character>();
     }
 
 	void Update () {
