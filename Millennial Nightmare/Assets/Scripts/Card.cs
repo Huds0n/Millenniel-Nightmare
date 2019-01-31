@@ -6,6 +6,7 @@ public class Card : MonoBehaviour {
 
     //Is the front or back of card showing
     private bool frontShowing;
+    private bool cardMatched;
 
     //Sprite Renderer Ref
     private SpriteRenderer spriteRenderer;
@@ -14,21 +15,16 @@ public class Card : MonoBehaviour {
     private Sprite frontFace;
     private Sprite backFace;
 
-    //List of Sprites for card
+    //Back of card sprite
     public Sprite backSprite;
-    public Sprite circleSprite;
-    public Sprite pentagonSprite;
-    public Sprite rectangleSprite;
-    public Sprite squareSprite;
-    public Sprite starSprite;
-    public Sprite triangleSprite;
 
     // Use this for initialization
     void Start () {
-        frontShowing = true;
+        frontShowing = false;
+        cardMatched = false;
 
         //Hardcoded front card face
-        frontFace = circleSprite;
+        frontFace = null;
         backFace = backSprite;
     }
 
@@ -36,7 +32,10 @@ public class Card : MonoBehaviour {
     void Update () {
 
         //Show correct face of card
-        if (frontShowing)
+        if (cardMatched) {
+            spriteRenderer.sprite = null;
+        }
+        else if (frontShowing)
         {
             //Tell the sprite renderer which face to show
             spriteRenderer.sprite = frontFace;
@@ -53,5 +52,34 @@ public class Card : MonoBehaviour {
 
     public SpriteRenderer setSpriteRenderer() {
         return this.spriteRenderer;
+    }
+
+    public bool getCardFlipped() {
+        return this.frontShowing;
+    }
+
+    public void flipBack() {
+        this.frontShowing = false;
+    }
+
+    public Sprite getCardFace() {
+        return this.frontFace;
+    }
+
+    public void setCardFace(Sprite sprite) {
+        this.frontFace = sprite;
+    }
+
+    public void setMatched() {
+        this.cardMatched = true;
+    }
+
+
+    void cardFlipped() {
+        frontShowing = !frontShowing;
+    }
+
+    private void OnMouseDown(){
+        cardFlipped();
     }
 }

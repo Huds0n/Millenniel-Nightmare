@@ -929,6 +929,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 02a2b5b9a9e27da47b9186cd61b1331b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  circleSprite: {fileID: 21300002, guid: b019bda1f18d71345b9b20ee296e65fa, type: 3}
+  pentagonSprite: {fileID: 21300010, guid: b019bda1f18d71345b9b20ee296e65fa, type: 3}
+  rectangleSprite: {fileID: 21300004, guid: b019bda1f18d71345b9b20ee296e65fa, type: 3}
+  squareSprite: {fileID: 21300006, guid: b019bda1f18d71345b9b20ee296e65fa, type: 3}
+  starSprite: {fileID: 21300008, guid: b019bda1f18d71345b9b20ee296e65fa, type: 3}
+  triangleSprite: {fileID: 21300000, guid: b019bda1f18d71345b9b20ee296e65fa, type: 3}
 --- !u!1 &285416295
 GameObject:
   m_ObjectHideFlags: 0
@@ -3027,12 +3033,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   backSprite: {fileID: 21300000, guid: 62f253d40bedef5489025f5c97084b43, type: 3}
-  circleSprite: {fileID: 21300002, guid: b019bda1f18d71345b9b20ee296e65fa, type: 3}
-  pentagonSprite: {fileID: 21300010, guid: b019bda1f18d71345b9b20ee296e65fa, type: 3}
-  rectangleSprite: {fileID: 21300004, guid: b019bda1f18d71345b9b20ee296e65fa, type: 3}
-  squareSprite: {fileID: 21300006, guid: b019bda1f18d71345b9b20ee296e65fa, type: 3}
-  starSprite: {fileID: 21300008, guid: b019bda1f18d71345b9b20ee296e65fa, type: 3}
-  triangleSprite: {fileID: 21300000, guid: b019bda1f18d71345b9b20ee296e65fa, type: 3}
 --- !u!1 &1120608426
 GameObject:
   m_ObjectHideFlags: 0
@@ -4002,12 +4002,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   backSprite: {fileID: 21300000, guid: 62f253d40bedef5489025f5c97084b43, type: 3}
-  circleSprite: {fileID: 21300002, guid: b019bda1f18d71345b9b20ee296e65fa, type: 3}
-  pentagonSprite: {fileID: 21300010, guid: b019bda1f18d71345b9b20ee296e65fa, type: 3}
-  rectangleSprite: {fileID: 21300004, guid: b019bda1f18d71345b9b20ee296e65fa, type: 3}
-  squareSprite: {fileID: 21300006, guid: b019bda1f18d71345b9b20ee296e65fa, type: 3}
-  starSprite: {fileID: 21300008, guid: b019bda1f18d71345b9b20ee296e65fa, type: 3}
-  triangleSprite: {fileID: 21300000, guid: b019bda1f18d71345b9b20ee296e65fa, type: 3}
 --- !u!1001 &1500788941
 Prefab:
   m_ObjectHideFlags: 0
@@ -4894,12 +4888,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   backSprite: {fileID: 21300000, guid: 62f253d40bedef5489025f5c97084b43, type: 3}
-  circleSprite: {fileID: 21300002, guid: b019bda1f18d71345b9b20ee296e65fa, type: 3}
-  pentagonSprite: {fileID: 21300010, guid: b019bda1f18d71345b9b20ee296e65fa, type: 3}
-  rectangleSprite: {fileID: 21300004, guid: b019bda1f18d71345b9b20ee296e65fa, type: 3}
-  squareSprite: {fileID: 21300006, guid: b019bda1f18d71345b9b20ee296e65fa, type: 3}
-  starSprite: {fileID: 21300008, guid: b019bda1f18d71345b9b20ee296e65fa, type: 3}
-  triangleSprite: {fileID: 21300000, guid: b019bda1f18d71345b9b20ee296e65fa, type: 3}
 --- !u!1 &1902215367
 GameObject:
   m_ObjectHideFlags: 0
@@ -5483,12 +5471,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   backSprite: {fileID: 21300000, guid: 62f253d40bedef5489025f5c97084b43, type: 3}
-  circleSprite: {fileID: 21300002, guid: b019bda1f18d71345b9b20ee296e65fa, type: 3}
-  pentagonSprite: {fileID: 21300010, guid: b019bda1f18d71345b9b20ee296e65fa, type: 3}
-  rectangleSprite: {fileID: 21300004, guid: b019bda1f18d71345b9b20ee296e65fa, type: 3}
-  squareSprite: {fileID: 21300006, guid: b019bda1f18d71345b9b20ee296e65fa, type: 3}
-  starSprite: {fileID: 21300008, guid: b019bda1f18d71345b9b20ee296e65fa, type: 3}
-  triangleSprite: {fileID: 21300000, guid: b019bda1f18d71345b9b20ee296e65fa, type: 3}
 --- !u!1 &2058460122
 GameObject:
   m_ObjectHideFlags: 0
