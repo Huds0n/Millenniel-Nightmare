@@ -24,13 +24,11 @@ public class Card : MonoBehaviour {
         cardMatched = false;
 
         //Hardcoded front card face
-        frontFace = null;
         backFace = backSprite;
     }
 
     // Update is called once per frame
     void Update () {
-
         //Show correct face of card
         if (cardMatched) {
             spriteRenderer.sprite = null;
@@ -50,7 +48,7 @@ public class Card : MonoBehaviour {
         this.spriteRenderer = spriteRenderer;
     }
 
-    public SpriteRenderer setSpriteRenderer() {
+    public SpriteRenderer getSpriteRenderer() {
         return this.spriteRenderer;
     }
 
@@ -74,6 +72,10 @@ public class Card : MonoBehaviour {
         this.cardMatched = true;
     }
 
+    public bool getMatched() {
+        return this.cardMatched;
+    }
+
 
     void cardFlipped() {
         frontShowing = !frontShowing;
@@ -81,5 +83,6 @@ public class Card : MonoBehaviour {
 
     private void OnMouseDown(){
         cardFlipped();
+        print(this.frontFace);
     }
 }

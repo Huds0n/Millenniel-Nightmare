@@ -107,7 +107,23 @@ public class MatchGame : MonoBehaviour {
     }
 
     private void assignCards() {
-        
+        int numSprites = cards.Count / 2;
+
+        for (int i = 0; i < 2; i++) {
+            for (int j = 0; j < numSprites; j++) {
+                
+                bool assigned = false;
+                while (!assigned){
+                    System.Random getrandom = new System.Random();
+                    int index = getrandom.Next(cards.Count);
+                    Card cardToAssign = (Card)cards[index];
+                    if (cardToAssign.getCardFace() == null) {
+                        cardToAssign.setCardFace((Sprite)sprites[j]);
+                        assigned = true;
+                    }
+                }
+            }
+        }
     }
 
     
