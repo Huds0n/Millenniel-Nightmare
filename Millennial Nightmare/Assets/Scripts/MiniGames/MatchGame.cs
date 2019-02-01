@@ -64,23 +64,6 @@ public class MatchGame : MonoBehaviour {
 
     // Update is called once per frame
     void Update () {
-
-        //Get the number of cards flipped
-        foreach (Card card in cards) {
-            if (card.getCardFlipped()) {
-                cardClicked++;
-            }
-        }
-        if (cardClicked == 1)
-        {
-            isChoosing = true;
-        }
-        else if (cardClicked == 2) {
-            checkMatch();
-            allCardsFlipped();
-        }
-        cardClicked = 0;
-
 	}
 
     //Flips all cards facedown
@@ -131,5 +114,30 @@ public class MatchGame : MonoBehaviour {
         }
     }
 
-    
+    public void checkCardFlips() {
+        //Get the number of cards flipped
+        foreach (Card card in cards)
+        {
+            if (card.getCardFlipped())
+            {
+                cardClicked++;
+            }
+        }
+        if (cardClicked == 1)
+        {
+            isChoosing = true;
+        }
+        else if (cardClicked == 2)
+        {
+            //At this point a delay is needed so that both cards can be seen face up
+            StartCoroutine(Wait());
+        }
+        cardClicked = 0;
+    }
+
+    IEnumerator Wait() {
+        yield return new WaitForSeconds(1.5f);
+        checkMatch();
+        allCardsFlipped();
+    }
 }
