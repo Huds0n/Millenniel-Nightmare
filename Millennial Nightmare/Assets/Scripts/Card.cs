@@ -81,8 +81,8 @@ public class Card : MonoBehaviour {
         frontShowing = !frontShowing;
     }
 
+    //Flips card when clicked on
     private void OnMouseDown(){
         cardFlipped();
-        print(this.frontFace);
     }
 }

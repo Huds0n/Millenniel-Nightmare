@@ -83,13 +83,16 @@ public class MatchGame : MonoBehaviour {
 
 	}
 
+    //Flips all cards facedown
     private void allCardsFlipped() {
         foreach (Card card in cards) {
             card.flipBack();
         }
     }
 
+    //This function find the two cards that have been selected, then checks if they have the same face
     private void checkMatch() {
+        //Get the two cards that are flipped
         ArrayList clickedCards = new ArrayList();
         foreach (Card card in cards) {
             if (card.getCardFlipped()) {
@@ -99,19 +102,21 @@ public class MatchGame : MonoBehaviour {
 
         Card card1 = (Card)clickedCards[0];
         Card card2 = (Card)clickedCards[1];
-
+        //check if the cards have the same face
         if (card1.getCardFace() == card2.getCardFace()) {
             card1.setMatched();
             card2.setMatched();
         }
     }
 
+    //This method assigns card their faces at the beginning of the minigame
     private void assignCards() {
+        //Get the number of sprites required to assign
         int numSprites = cards.Count / 2;
-
+        //loop twice: Outer loop assigns each required sprite once
         for (int i = 0; i < 2; i++) {
+            //inner loop: Assigns a sprite to a random unassigned card
             for (int j = 0; j < numSprites; j++) {
-                
                 bool assigned = false;
                 while (!assigned){
                     System.Random getrandom = new System.Random();
