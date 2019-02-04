@@ -74,7 +74,13 @@ public class Card : MonoBehaviour
 
     public void flipBack()
     {
-        this.frontShowing = false;
+        //This is where the card rotates back
+        if (frontShowing)
+        {
+            rotateCard("clockwise");
+        }
+        
+        //this.frontShowing = false;
     }
 
     public Sprite getCardFace()
@@ -110,8 +116,6 @@ public class Card : MonoBehaviour
         rotateCard("clockwise");
         //Wait 1.5 seconds and rotate back
         StartCoroutine(Wait());
-        print("Here");
-        matchGame.checkCardFlips();
     }
 
     public void rotateCard(string direction)
@@ -146,14 +150,13 @@ public class Card : MonoBehaviour
         // Clear the coroutine so the next input starts a fresh one.
         rotationCoroutine = null;
         frontShowing = !frontShowing;
-        if (frontShowing == true) {
-            rotateCard("anticlockwise");
-        }
+        rotateCard("anticlockwise");
     }
 
     IEnumerator Wait()
     {
         yield return new WaitForSeconds(3.5f);
-        rotateCard("clockwise");
+        print(frontShowing);
+        matchGame.checkCardFlips();
     }
 }
