@@ -929,6 +929,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 02a2b5b9a9e27da47b9186cd61b1331b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  cardsFlipped: 0
   circleSprite: {fileID: 21300002, guid: b019bda1f18d71345b9b20ee296e65fa, type: 3}
   pentagonSprite: {fileID: 21300010, guid: b019bda1f18d71345b9b20ee296e65fa, type: 3}
   rectangleSprite: {fileID: 21300004, guid: b019bda1f18d71345b9b20ee296e65fa, type: 3}
@@ -3514,14 +3515,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7d5277bee51f2224999562d09bc690e2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  spawners:
-  - {fileID: 923254557}
-  - {fileID: 927669699}
-  - {fileID: 770926987}
-  - {fileID: 588052089}
-  - {fileID: 1246314683}
-  - {fileID: 1576594249}
-  - {fileID: 526525053}
   enemy:
   - {fileID: 1535255999804192, guid: 9f0767a23401911479c63c92bc2f36e3, type: 2}
   - {fileID: 1750043781011528, guid: fc1400d7caa18a945afe8a00b8ee73ec, type: 2}
