@@ -9,6 +9,9 @@ public class MatchGame : MonoBehaviour {
     private bool isChoosing;
     private int cardClicked;
 
+    //So only 2 cards can be flipped
+    public int cardsFlipped;
+
     //List of Cards
     private Card card1;
     private Card card2;
@@ -28,6 +31,7 @@ public class MatchGame : MonoBehaviour {
 
     // Use this for initialization
     void Start () {
+        cardsFlipped = 0;
         //Initialise Sprite list
         sprites = new ArrayList();
         sprites.Add(circleSprite);
@@ -71,6 +75,7 @@ public class MatchGame : MonoBehaviour {
         foreach (Card card in cards) {
             card.flipBack();
         }
+        cardsFlipped = 0;
     }
 
     //This function find the two cards that have been selected, then checks if they have the same face

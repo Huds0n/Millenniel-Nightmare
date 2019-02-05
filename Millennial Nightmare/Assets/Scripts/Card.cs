@@ -112,10 +112,13 @@ public class Card : MonoBehaviour
     //Flips card when clicked on
     private void OnMouseDown()
     {
-        //TODO:Add a function that rotates the card
-        rotateCard("clockwise");
-        //Wait 1.5 seconds and rotate back
-        StartCoroutine(Wait());
+        matchGame.cardsFlipped++;
+        if (matchGame.cardsFlipped <= 2) {
+            //rotate the card
+            rotateCard("clockwise");
+            //Wait 1.5 seconds and rotate back
+            StartCoroutine(Wait());
+        }
     }
 
     public void rotateCard(string direction)
