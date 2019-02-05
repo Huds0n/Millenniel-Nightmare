@@ -7,7 +7,6 @@ public class Enemy : MonoBehaviour {
     public float speed = 1f;
 	// Use this for initialization
 	void Start () {
-		
 	}
 	
 	// Update is called once per frame

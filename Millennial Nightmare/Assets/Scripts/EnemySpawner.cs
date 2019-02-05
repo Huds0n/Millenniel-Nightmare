@@ -12,7 +12,7 @@ public class EnemySpawner : MonoBehaviour {
     void Start () {
         spawners = new ArrayList();
         CreateSpawners();
-        SpawnEnemyPerson();
+        InvokeRepeating("SpawnEnemyPerson", 0, 5);
 	}
 
 	void Update () {
